@@ -4,4 +4,9 @@ import * as cdk from '@aws-cdk/core';
 import { SmartInfraStack } from '../lib/smart-infra-stack';
 
 const app = new cdk.App();
-new SmartInfraStack(app, 'SmartInfraStack');
+new SmartInfraStack(app, 'SmartInfraStack',{ 
+    env: {
+        account: process.env.CDK_DEPLOY_ACCOUNT || process.env.CDK_DEFAULT_ACCOUNT, 
+        region: process.env.CDK_DEPLOY_REGION || process.env.CDK_DEFAULT_REGION 
+    }
+});
